@@ -1,0 +1,16 @@
+.ssh
+id_*
+authorized_keys
+authorized_keys*
+known_hosts
+
+*.swp
+*.log
+*.tar
+*.gz
+*.tgz
+*.xz
+
+pod/
+license.cfg
+
