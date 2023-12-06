@@ -47,8 +47,8 @@ alias p='cd /opt/intrexx/org/*/'
 alias pl='less /opt/intrexx/org/*/log/portal.log'
 EOF
 
-# cleanup
-rm -rf /opt/intrexx/installer/setup/content
-rm -rf /setup/tmp
-rm -rf /tmp/* /var/tmp/*
+# add Intrexx user
+useradd -m -s /bin/bash --uid 1000 intrexx
 
+# cleanup
+rm -rf /tmp/* /var/tmp/*
