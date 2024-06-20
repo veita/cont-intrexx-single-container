@@ -18,9 +18,13 @@ TCP_PORTS="$3"
 IX_ARCHIVE_NAME="$(basename $DOWNLOAD_URL)"
 TAG="${IX_ARCHIVE_NAME%%.???????-linux.tar.gz}"
 
+[[ ${IX_ARCHIVE_NAME} =~ ^intrexx-([a-f0-9\.]*)\.[a-f0-9]{7}-linux.tar.gz$ ]] ; echo ${BASH_REMATCH[1]}
+
 if [ ! -f "work/$IX_ARCHIVE_NAME" ]
 then
-  (cd work/ ; curl -O "$DOWNLOAD_URL" || exit 1)
+  [ -f work/download-credentials.txt ] && CREDS="-u $(< work/download-credentials.txt)" || CREDS=""
+
+  (cd work/ ; curl "$CREDS" -O "$DOWNLOAD_URL" || exit 1)
 fi
 
 IMAGE="localhost/intrexx-single-container:${TAG}"
