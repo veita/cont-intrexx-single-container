@@ -10,7 +10,9 @@ cd "${0%/*}"
 #DOWNLOAD_URL="https://download.intrexx.com/intrexx/rolling/steady/12.0.0.20240528.8adb14f/intrexx-12.0.0.20240528.8adb14f-linux.tar.gz"
 #DOWNLOAD_URL="https://download.intrexx.com/intrexx/rolling/steady/12.0.1.20240918.badc4ef/intrexx-12.0.1.20240918.badc4ef-linux.tar.gz"
 #DOWNLOAD_URL="https://download.intrexx.com/intrexx/rolling/steady/12.0.2.20241204.4beaae5/intrexx-12.0.2.20241204.4beaae5-linux.tar.gz"
-DOWNLOAD_URL="https://download.intrexx.com/intrexx/rolling/steady/12.0.3.20250224.3292a0d/intrexx-12.0.3.20250224.3292a0d-linux.tar.gz"
+#DOWNLOAD_URL="https://download.intrexx.com/intrexx/rolling/steady/12.0.3.20250224.3292a0d/intrexx-12.0.3.20250224.3292a0d-linux.tar.gz"
+DOWNLOAD_URL="https://download.intrexx.com/intrexx/rolling/steady/12.0.4.20250409.549668d/intrexx-12.0.4.20250409.549668d-linux.tar.gz"
+
 
 SUITE=${1:-bookworm}
 TCP_PORTS="10180 10181 10182 10183 10184 10185"
