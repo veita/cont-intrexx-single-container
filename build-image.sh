@@ -22,9 +22,7 @@ TAG="${IX_ARCHIVE_NAME%%.???????-linux.tar.gz}"
 
 if [ ! -f "work/$IX_ARCHIVE_NAME" ]
 then
-  [ -f work/download-credentials.txt ] && CREDS="-u $(< work/download-credentials.txt)" || CREDS=""
-
-  (cd work/ ; curl "$CREDS" -O "$DOWNLOAD_URL" || exit 1)
+  (cd work/ ; curl -fnsSL -O "$DOWNLOAD_URL" || exit 1)
 fi
 
 IMAGE="localhost/intrexx-single-container:${TAG}"
