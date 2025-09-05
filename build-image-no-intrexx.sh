@@ -4,7 +4,7 @@ set -ex
 
 cd "${0%/*}"
 
-SUITE=${1:-bookworm}
+SUITE=${1:-trixie}
 TCP_PORTS="10180 10181 10182 10183 10184 10185"
 
 IMAGE="localhost/intrexx-single-container-no-intrexx:${SUITE}"

@@ -13,8 +13,8 @@ The installation does not contain any portal.
 
 ## Base image
 
-The base image is `localhost/debian-systemd:${SUITE}` where `${SUITE}` is either `bullseye`,
-or `bookworm`, or `trixie`.
+The base image is `localhost/debian-systemd:${SUITE}` where `${SUITE}`
+is either `bookworm`, `trixie`, or `forky`.
 
 The base image is provided by the [debian-systemd](https://github.com/veita/cont-debian-systemd)
 project.
@@ -34,14 +34,14 @@ cd intrexx-single-container
 Run the container, e.g. with
 
 ```bash
-podman run --detach --rm --cap-add audit_write,audit_control -p=10022:22 -p=10180-10185:10180-10185 localhost/intrexx-single-container-bookworm
+podman run --detach --rm --cap-add audit_write,audit_control -p=10022:22 -p=10180-10185:10180-10185 localhost/intrexx-single-container-trixie
 ```
 
 `podman ps` reports the exposed ports of the running container:
 
 ```
 CONTAINER ID  IMAGE                                   COMMAND     CREATED        STATUS            PORTS                                                        NAMES
-229f33f0d414  localhost/intrexx-single-container-bookworm  /sbin/init  6 seconds ago  Up 5 seconds ago  0.0.0.0:10022->22/tcp, 0.0.0.0:10180-10182->10180-10182/tcp  intrexx-11.0
+229f33f0d414  localhost/intrexx-single-container-trixie  /sbin/init  6 seconds ago  Up 5 seconds ago  0.0.0.0:10022->22/tcp, 0.0.0.0:10180-10182->10180-10182/tcp  intrexx-11.0
 ```
 
 ## Creating new Portals

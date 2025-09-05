@@ -18,8 +18,9 @@ debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Local only'
 apt-get install -qy postfix
 
 # install and configure PostgreSQL
-wget -q https://www.postgresql.org/media/keys/ACCC4CF8.asc -O - | apt-key add -
-echo "deb http://apt.postgresql.org/pub/repos/apt/ $SUITE-pgdg main" >> /etc/apt/sources.list
+curl -fsSL -o /etc/apt/keyrings/pg.asc https://www.postgresql.org/media/keys/ACCC4CF8.asc
+
+echo "deb [signed-by=/etc/apt/keyrings/pg.asc] http://apt.postgresql.org/pub/repos/apt/ $SUITE-pgdg main" >> /etc/apt/sources.list
 
 apt-get update -qy
 apt-get install -qy postgresql

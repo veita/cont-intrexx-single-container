@@ -17,7 +17,7 @@ cd "${0%/*}"
 #DOWNLOAD_URL="https://download.intrexx.com/intrexx/rolling/steady/12.1.1.20250716.237b96c/intrexx-12.1.1.20250716.237b96c-linux.tar.gz"
 DOWNLOAD_URL="https://download.intrexx.com/intrexx/rolling/steady/12.1.2.20250730.eb1a245/intrexx-12.1.2.20250730.eb1a245-linux.tar.gz"
 
-SUITE=${1:-bookworm}
+SUITE=${1:-trixie}
 TCP_PORTS="10180 10181 10182 10183 10184 10185"
 
 # build the image
