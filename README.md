@@ -25,7 +25,7 @@ project.
 ```bash
 git clone https://github.com/veita/cont-intrexx-single-container.git intrexx-single-container
 cd intrexx-single-container
-./build-image-xxx.sh
+./build-image.sh
 ```
 
 

@@ -1,28 +1,24 @@
 #!/usr/bin/env bash
 
-set -ex
+set -exuo pipefail
 
 cd "${0%/*}"
 
-# this script requires four parameters
-if [ "$#" -ne 3 ]
-then
-    printf "Illegal number of arguments\n" >&2
-    exit 1
-fi
 
-SUITE="$1"
-DOWNLOAD_URL="$2"
-TCP_PORTS="$3"
+# build parameters
+DOWNLOAD_URL="https://update.intrexx.com/intrexx/12.2.0.20260623.f60193c/server/intrexx-setup-linux-amd64.tar.gz"
+
+SUITE=${1:-trixie}
+TCP_PORTS="10180 10181 10182 10183 10184 10185"
+
 
 IX_ARCHIVE_NAME="$(basename $DOWNLOAD_URL)"
-TAG="${IX_ARCHIVE_NAME%%.???????-linux.tar.gz}"
+TAG="${DOWNLOAD_URL#*\/intrexx/}"
+TAG="${TAG%%/server/*}"
 
-[[ ${IX_ARCHIVE_NAME} =~ ^intrexx-([a-f0-9\.]*)\.[a-f0-9]{7}-linux.tar.gz$ ]] ; echo ${BASH_REMATCH[1]}
-
-if [ ! -f "work/$IX_ARCHIVE_NAME" ]
+if [ ! -f "work/$TAG/$IX_ARCHIVE_NAME" ]
 then
-  (cd work/ ; curl -fnsSL -O "$DOWNLOAD_URL" || exit 1)
+  (mkdir -p "work/$TAG" && cd "work/$TAG" && curl -fnsSL -O "$DOWNLOAD_URL" || exit 1)
 fi
 
 IMAGE="localhost/intrexx-single-container:${TAG}"
@@ -31,7 +27,7 @@ CONT=$(buildah from localhost/intrexx-single-container-no-intrexx:${SUITE})
 
 buildah copy $CONT setup/ /setup
 
-buildah copy $CONT "work/$IX_ARCHIVE_NAME" "/setup/$IX_ARCHIVE_NAME"
+buildah copy $CONT "work/$TAG/$IX_ARCHIVE_NAME" "/setup/$IX_ARCHIVE_NAME"
 buildah run $CONT /bin/bash /setup/setup.sh
 buildah run $CONT rm "/setup/$IX_ARCHIVE_NAME"
 

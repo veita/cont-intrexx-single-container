@@ -27,8 +27,7 @@ cd /setup/tmp
 
 $(cat /setup/*.tar.gz | tar -xz) || exit 1
 
-mv "/setup/tmp/$(ls)" /setup/tmp/intrexx-setup
-cd /setup/tmp/intrexx-setup
+cd "/setup/tmp/$(ls)"
 
 # setup Intrexx
 ./setup.sh --console --nostart --configFile="/setup/configuration.properties"
