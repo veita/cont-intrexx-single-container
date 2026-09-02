@@ -6,7 +6,8 @@ cd "${0%/*}"
 
 
 # build parameters
-DOWNLOAD_URL="https://update.intrexx.com/intrexx/12.2.0.20260623.f60193c/server/intrexx-setup-linux-amd64.tar.gz"
+#DOWNLOAD_URL="https://update.intrexx.com/intrexx/12.2.0.20260623.f60193c/server/intrexx-setup-linux-amd64.tar.gz"
+DOWNLOAD_URL="https://update.intrexx.com/intrexx/12.2.1.20260828.cb96503/server/intrexx-setup-linux-amd64.tar.gz"
 
 SUITE=${1:-trixie}
 TCP_PORTS="10180 10181 10182 10183 10184 10185"
