@@ -6,6 +6,8 @@
 
     <template path="/setup/portal/template1" />
 
+    <adminUser guid="7312F993D0DA4CECCA9AE5A9D865BE142DE413EA" password="intrexx-admin" enabled="true"/>
+
     <database
         type="postgresql"
         timezone="UTC"
